@@ -1,0 +1,1274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RetailManagerDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="BrandCode" />
+          </Key>
+          <Property Name="BrandCode" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="BrandDesc" Type="nvarchar" MaxLength="60" />
+          <Property Name="DiscPerc" Type="money" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CatgCode" />
+          </Key>
+          <Property Name="CatgCode" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="CatgDesc" Type="nvarchar" MaxLength="30" />
+          <Property Name="DeptCode" Type="nvarchar" MaxLength="8" />
+          <Property Name="DiscPer" Type="money" />
+        </EntityType>
+        <EntityType Name="CurrencyFile">
+          <Key>
+            <PropertyRef Name="CurrCode" />
+          </Key>
+          <Property Name="Country" Type="nvarchar" MaxLength="25" />
+          <Property Name="SwiftCode" Type="nvarchar" MaxLength="3" />
+          <Property Name="CurrCode" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="XRate" Type="money" />
+          <Property Name="EdtDt" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="CustdataN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustName" Type="nvarchar" MaxLength="1000" />
+          <Property Name="LocCode" Type="nvarchar" MaxLength="1000" />
+          <Property Name="PosNo" Type="int" />
+          <Property Name="Add1" Type="nvarchar" MaxLength="500" />
+          <Property Name="Add2" Type="nvarchar" MaxLength="500" />
+          <Property Name="Add3" Type="nvarchar" MaxLength="500" />
+          <Property Name="Updateddate" Type="datetime" />
+          <Property Name="GSTUpdate" Type="datetime" />
+          <Property Name="ProdType" Type="nvarchar" MaxLength="50" />
+          <Property Name="A" Type="nvarchar" MaxLength="1000" />
+          <Property Name="B" Type="nvarchar" MaxLength="1000" />
+          <Property Name="C" Type="nvarchar" MaxLength="1000" />
+          <Property Name="D" Type="nvarchar" MaxLength="1000" />
+          <Property Name="E" Type="nvarchar" MaxLength="1000" />
+          <Property Name="F" Type="nvarchar" MaxLength="1000" />
+          <Property Name="G" Type="nvarchar" MaxLength="1000" />
+          <Property Name="H" Type="nvarchar" MaxLength="1000" />
+          <Property Name="I" Type="nvarchar" MaxLength="1000" />
+          <Property Name="J" Type="nvarchar" MaxLength="1000" />
+          <Property Name="K" Type="nvarchar" MaxLength="1000" />
+          <Property Name="L" Type="nvarchar" MaxLength="1000" />
+          <Property Name="M" Type="nvarchar" MaxLength="1000" />
+          <Property Name="N" Type="nvarchar" MaxLength="1000" />
+          <Property Name="SuppVchApi" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DeptCode" />
+          </Key>
+          <Property Name="DeptCode" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="DeptDesc" Type="nvarchar" MaxLength="30" />
+          <Property Name="DiscPerc" Type="money" />
+          <Property Name="Comm" Type="bit" Nullable="false" />
+          <Property Name="Threshold" Type="real" />
+        </EntityType>
+        <EntityType Name="HSNMaster">
+          <Key>
+            <PropertyRef Name="HSNName" />
+            <PropertyRef Name="TaxCode" />
+          </Key>
+          <Property Name="HSNCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HSNName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TaxCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SGST" Type="money" />
+          <Property Name="CGST" Type="money" />
+          <Property Name="IGST" Type="money" />
+          <Property Name="Cess" Type="money" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocCode" />
+          </Key>
+          <Property Name="LocCode" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="LocName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactPerson" Type="nvarchar" MaxLength="30" />
+          <Property Name="Add1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Add2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Add3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="Zip" Type="nvarchar" MaxLength="10" />
+          <Property Name="MarkUP" Type="real" />
+          <Property Name="SalesUpdate" Type="nvarchar" MaxLength="1" />
+          <Property Name="Franchisee" Type="nvarchar" MaxLength="1" />
+          <Property Name="OutsideState" Type="nvarchar" MaxLength="1" />
+          <Property Name="WHCode" Type="nvarchar" MaxLength="8" />
+          <Property Name="WHName" Type="nvarchar" MaxLength="40" />
+          <Property Name="TinNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="ZoneCode" Type="nvarchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="Media">
+          <Key>
+            <PropertyRef Name="LocCode" />
+            <PropertyRef Name="MediaDate" />
+            <PropertyRef Name="PaymentCode" />
+            <PropertyRef Name="PaymentName" />
+          </Key>
+          <Property Name="LocCode" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="MediaDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="PaymentCode" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="PaymentName" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CurrCode" Type="nvarchar" MaxLength="5" />
+          <Property Name="BuyRate" Type="money" />
+          <Property Name="SellRate" Type="money" />
+          <Property Name="DrawerAmount" Type="money" />
+          <Property Name="DrawerAmountByUser" Type="money" />
+          <Property Name="EquivalentAmount" Type="money" />
+        </EntityType>
+        <EntityType Name="PaymentMode">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="8" />
+          <Property Name="CurrCode" Type="nvarchar" MaxLength="4" />
+          <Property Name="MaxAmt" Type="money" />
+          <Property Name="IPFrom" Type="nvarchar" MaxLength="1" />
+          <Property Name="OpenDrawer" Type="bit" Nullable="false" />
+          <Property Name="PopUpFx" Type="bit" Nullable="false" />
+          <Property Name="Change" Type="bit" Nullable="false" />
+          <Property Name="ApprCode" Type="bit" Nullable="false" />
+          <Property Name="OverTender" Type="bit" Nullable="false" />
+          <Property Name="Validate" Type="bit" Nullable="false" />
+          <Property Name="PayCatg" Type="nvarchar" MaxLength="3" />
+          <Property Name="PayAmt" Type="money" />
+          <Property Name="PayGroup" Type="nvarchar" MaxLength="5" />
+          <Property Name="ChangeCode" Type="nvarchar" MaxLength="2" />
+          <Property Name="Smart" Type="bit" Nullable="false" />
+          <Property Name="Credit" Type="bit" Nullable="false" />
+          <Property Name="Denomination" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="plumaster">
+          <Key>
+            <PropertyRef Name="SkuCode" />
+            <PropertyRef Name="PluCode" />
+          </Key>
+          <Property Name="SkuCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PluCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PluQty" Type="real" />
+          <Property Name="CostPrice" Type="money" />
+          <Property Name="MRP" Type="money" />
+          <Property Name="SalePrice" Type="money" />
+          <Property Name="ExpiryMonth" Type="int" />
+          <Property Name="ExpiryYear" Type="int" />
+          <Property Name="EanCode" Type="nvarchar" MaxLength="30" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="ACP" Type="money" />
+          <Property Name="LUpdatedDate" Type="datetime" />
+          <Property Name="WSPrice" Type="money" />
+          <Property Name="PluShade" Type="nvarchar" MaxLength="10" />
+          <Property Name="ColorCode" Type="nvarchar" MaxLength="5" />
+          <Property Name="SizeCode" Type="nvarchar" MaxLength="5" />
+          <Property Name="PluMBQ" Type="real" />
+          <Property Name="RackNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="ExpiryDate" Type="datetime" />
+          <Property Name="ExtraPrice" Type="money" />
+        </EntityType>
+        <EntityType Name="SkuMaster">
+          <Key>
+            <PropertyRef Name="SkuCode" />
+          </Key>
+          <Property Name="SkuCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="SkuDesc" Type="nvarchar" MaxLength="70" />
+          <Property Name="Price" Type="money" />
+          <Property Name="CatgCode" Type="nvarchar" MaxLength="8" />
+          <Property Name="TaxCode" Type="nvarchar" MaxLength="1" />
+          <Property Name="OpenRate" Type="bit" Nullable="false" />
+          <Property Name="Kit" Type="bit" Nullable="false" />
+          <Property Name="Discountable" Type="bit" Nullable="false" />
+          <Property Name="Qoh" Type="real" />
+          <Property Name="Rol" Type="real" />
+          <Property Name="Roq" Type="real" />
+          <Property Name="Lastcost" Type="money" />
+          <Property Name="MinPrice" Type="money" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="50" />
+          <Property Name="EffectiveDate" Type="datetime" />
+          <Property Name="NewPrice" Type="money" />
+          <Property Name="UOM" Type="nvarchar" MaxLength="7" />
+          <Property Name="DtPromFrom" Type="datetime" />
+          <Property Name="DtPromTo" Type="datetime" />
+          <Property Name="PromPrice" Type="money" />
+          <Property Name="AvgCost" Type="money" />
+          <Property Name="CostPrice" Type="money" />
+          <Property Name="MRP" Type="money" />
+          <Property Name="ExpiryMonth" Type="int" />
+          <Property Name="ExpiryYear" Type="int" />
+          <Property Name="SubCatgCode" Type="nvarchar" MaxLength="8" />
+          <Property Name="SupplierCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="EanNumber" Type="bit" Nullable="false" />
+          <Property Name="Markup" Type="money" />
+          <Property Name="MarkDown" Type="money" />
+          <Property Name="MfgCode" Type="nvarchar" MaxLength="8" />
+          <Property Name="EanCode" Type="nvarchar" MaxLength="30" />
+          <Property Name="ShortDesc" Type="nvarchar" MaxLength="30" />
+          <Property Name="MBQ" Type="real" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="RunningPluNo" Type="int" />
+          <Property Name="BrandCode" Type="nvarchar" MaxLength="8" />
+          <Property Name="PackSize" Type="nvarchar" MaxLength="10" />
+          <Property Name="Inactive" Type="bit" Nullable="false" />
+          <Property Name="BestBefore" Type="int" />
+          <Property Name="Indent" Type="real" />
+          <Property Name="OnOrder" Type="real" />
+          <Property Name="RackNo" Type="nvarchar" MaxLength="3" />
+          <Property Name="FrTaxCode" Type="nvarchar" MaxLength="1" />
+          <Property Name="ToAllLocations" Type="bit" Nullable="false" />
+          <Property Name="Consignment" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="5" />
+          <Property Name="Disc1" Type="money" />
+          <Property Name="Disc2" Type="money" />
+          <Property Name="FirstCP" Type="money" />
+          <Property Name="WSPrice" Type="money" />
+          <Property Name="CSTTaxCode" Type="nvarchar" MaxLength="2" />
+          <Property Name="MaxBQ" Type="real" />
+          <Property Name="SizeCode" Type="nvarchar" MaxLength="5" />
+          <Property Name="ColorCode" Type="nvarchar" MaxLength="5" />
+          <Property Name="AllowDecimals" Type="nvarchar" MaxLength="1" />
+          <Property Name="WebSKU" Type="nvarchar" MaxLength="1" />
+          <Property Name="Matrix" Type="nvarchar" MaxLength="1" />
+          <Property Name="PatternCode" Type="nvarchar" MaxLength="5" />
+          <Property Name="HSNCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="SplCess" Type="money" />
+        </EntityType>
+        <EntityType Name="SkuPrice">
+          <Key>
+            <PropertyRef Name="LocCode" />
+            <PropertyRef Name="SkuCode" />
+            <PropertyRef Name="PluCode" />
+          </Key>
+          <Property Name="LocCode" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="SkuCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PluCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="EanCode" Type="nvarchar" MaxLength="13" />
+          <Property Name="CostPrice" Type="money" />
+          <Property Name="MRP" Type="money" />
+          <Property Name="SalePrice" Type="money" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="TaxCode" Type="nvarchar" MaxLength="1" />
+          <Property Name="OpenRate" Type="bit" />
+          <Property Name="Discountable" Type="bit" />
+          <Property Name="InActive" Type="bit" />
+          <Property Name="NonInventory" Type="bit" />
+        </EntityType>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="StockDate" />
+            <PropertyRef Name="LocCode" />
+            <PropertyRef Name="SkuCode" />
+            <PropertyRef Name="PluCode" />
+          </Key>
+          <Property Name="StockDate" Type="datetime" Nullable="false" />
+          <Property Name="LocCode" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="SkuCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PluCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Purchase" Type="real" />
+          <Property Name="TransferIn" Type="real" />
+          <Property Name="TransferOut" Type="real" />
+          <Property Name="StockTake" Type="real" />
+          <Property Name="StockWriteOff" Type="real" />
+          <Property Name="Sales" Type="real" />
+          <Property Name="PurchaseReturn" Type="real" />
+          <Property Name="QOH" Type="real" />
+          <Property Name="Variance" Type="real" />
+          <Property Name="OldQty" Type="real" />
+          <Property Name="Refund" Type="real" />
+          <Property Name="SalesValue" Type="money" />
+          <Property Name="Gst" Type="money" />
+          <Property Name="Discount" Type="money" />
+          <Property Name="DiscCount" Type="int" />
+          <Property Name="FreeQty" Type="real" />
+          <Property Name="FreeSales" Type="real" />
+          <Property Name="OB" Type="real" />
+          <Property Name="CB" Type="real" />
+          <Property Name="ApprOut" Type="real" />
+          <Property Name="ApprIn" Type="real" />
+          <Property Name="CostValue" Type="money" />
+          <Property Name="SurchargeAmt" Type="money" />
+        </EntityType>
+        <EntityType Name="SubCatg">
+          <Key>
+            <PropertyRef Name="SubCatgCode" />
+          </Key>
+          <Property Name="SubCatgCode" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="SubCatgDesc" Type="nvarchar" MaxLength="30" />
+          <Property Name="Commission" Type="money" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SuppCode" />
+          </Key>
+          <Property Name="SuppCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="SuppName" Type="nvarchar" MaxLength="40" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="30" />
+          <Property Name="Area" Type="nvarchar" MaxLength="30" />
+          <Property Name="Town" Type="nvarchar" MaxLength="30" />
+          <Property Name="State" Type="nvarchar" MaxLength="30" />
+          <Property Name="Country" Type="nvarchar" MaxLength="30" />
+          <Property Name="Phones" Type="nvarchar" MaxLength="40" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="30" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="30" />
+          <Property Name="Email" Type="nvarchar" MaxLength="30" />
+          <Property Name="Zip" Type="nvarchar" MaxLength="10" />
+          <Property Name="URL" Type="nvarchar" MaxLength="30" />
+          <Property Name="GST" Type="nvarchar" MaxLength="30" />
+          <Property Name="CST" Type="nvarchar" MaxLength="30" />
+          <Property Name="MfgCode" Type="nvarchar" MaxLength="8" />
+          <Property Name="DiscPer" Type="money" />
+          <Property Name="TaxPer" Type="money" />
+          <Property Name="CashCheque" Type="int" />
+          <Property Name="CreditDays" Type="int" />
+          <Property Name="FGL" Type="nvarchar" MaxLength="30" />
+          <Property Name="DrugLic" Type="nvarchar" MaxLength="30" />
+          <Property Name="TIN" Type="nvarchar" MaxLength="30" />
+          <Property Name="OutsideState" Type="nvarchar" MaxLength="1" />
+          <Property Name="NonVatDealer" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="TaxFile">
+          <Key>
+            <PropertyRef Name="TaxCode" />
+          </Key>
+          <Property Name="TaxCode" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="TaxDesc" Type="nvarchar" MaxLength="10" />
+          <Property Name="TaxPerc" Type="money" />
+          <Property Name="CalcSur" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="vipmaster">
+          <Key>
+            <PropertyRef Name="VipCode" />
+          </Key>
+          <Property Name="VipCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="VipSurName" Type="nvarchar" MaxLength="20" />
+          <Property Name="VipName" Type="nvarchar" MaxLength="30" />
+          <Property Name="IcPassportNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="1" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="30" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="30" />
+          <Property Name="City" Type="nvarchar" MaxLength="20" />
+          <Property Name="State" Type="nvarchar" MaxLength="20" />
+          <Property Name="Country" Type="nvarchar" MaxLength="20" />
+          <Property Name="PostCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="TelephoneHome" Type="nvarchar" MaxLength="20" />
+          <Property Name="TelephoneOther" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Race" Type="nvarchar" MaxLength="20" />
+          <Property Name="ExpiryDate" Type="datetime" />
+          <Property Name="Occupation" Type="nvarchar" MaxLength="20" />
+          <Property Name="CustomerSince" Type="datetime" />
+          <Property Name="LastPurchDate" Type="datetime" />
+          <Property Name="LastPurchAmt" Type="money" />
+          <Property Name="YTDPurch" Type="money" />
+          <Property Name="YTDNoOfPurch" Type="int" />
+          <Property Name="SpouseName" Type="nvarchar" MaxLength="30" />
+          <Property Name="SpouseDob" Type="datetime" />
+          <Property Name="AnniDate" Type="datetime" />
+          <Property Name="Child1" Type="nvarchar" MaxLength="30" />
+          <Property Name="Child1Dob" Type="datetime" />
+          <Property Name="Child2" Type="nvarchar" MaxLength="30" />
+          <Property Name="Child2Dob" Type="datetime" />
+          <Property Name="Child3" Type="nvarchar" MaxLength="30" />
+          <Property Name="Child3Dob" Type="datetime" />
+          <Property Name="Child4" Type="nvarchar" MaxLength="30" />
+          <Property Name="Child4Dob" Type="datetime" />
+          <Property Name="Child5" Type="nvarchar" MaxLength="30" />
+          <Property Name="Child5Dob" Type="datetime" />
+          <Property Name="CustType" Type="nvarchar" MaxLength="1" />
+          <Property Name="CreditLimit" Type="money" />
+          <Property Name="OSAmount" Type="money" />
+          <Property Name="NoOfTrans" Type="int" />
+          <Property Name="TotDisc" Type="money" />
+          <Property Name="TotTax" Type="money" />
+          <Property Name="TotValue" Type="money" />
+          <Property Name="TotPointsAcc" Type="real" />
+          <Property Name="TotPointsRedeem" Type="real" />
+          <Property Name="Vip" Type="bit" Nullable="false" />
+          <Property Name="Credit" Type="bit" Nullable="false" />
+          <Property Name="Corporate" Type="bit" Nullable="false" />
+          <Property Name="DisPerc" Type="real" />
+          <Property Name="LocCode" Type="nvarchar" MaxLength="8" />
+          <Property Name="Address3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address4" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="RetailManagerDBModelStoreContainer">
+          <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CurrencyFile" EntityType="Self.CurrencyFile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustdataN" EntityType="Self.CustdataN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HSNMaster" EntityType="Self.HSNMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Media" EntityType="Self.Media" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentMode" EntityType="Self.PaymentMode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="plumaster" EntityType="Self.plumaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SkuMaster" EntityType="Self.SkuMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SkuPrice" EntityType="Self.SkuPrice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubCatg" EntityType="Self.SubCatg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaxFile" EntityType="Self.TaxFile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vipmaster" EntityType="Self.vipmaster" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RetailManagerDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CustdataN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustName" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="LocCode" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="PosNo" Type="Int32" />
+          <Property Name="Add1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Add2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Add3" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Updateddate" Type="DateTime" Precision="3" />
+          <Property Name="GSTUpdate" Type="DateTime" Precision="3" />
+          <Property Name="ProdType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="A" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="B" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="C" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="D" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="E" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="F" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="G" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="H" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="I" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="J" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="K" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="L" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="M" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="N" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="SuppVchApi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="RetailManagerDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CustdataNs" EntityType="Self.CustdataN" />
+          <EntitySet Name="Categories" EntityType="RetailManagerDBModel.Category" />
+          <EntitySet Name="Brands" EntityType="RetailManagerDBModel.Brand" />
+          <EntitySet Name="CurrencyFiles" EntityType="RetailManagerDBModel.CurrencyFile" />
+          <EntitySet Name="HSNMasters" EntityType="RetailManagerDBModel.HSNMaster" />
+          <EntitySet Name="Locations" EntityType="RetailManagerDBModel.Location" />
+          <EntitySet Name="Media" EntityType="RetailManagerDBModel.Medium" />
+          <EntitySet Name="PaymentModes" EntityType="RetailManagerDBModel.PaymentMode" />
+          <EntitySet Name="plumasters" EntityType="RetailManagerDBModel.plumaster" />
+          <EntitySet Name="SkuMasters" EntityType="RetailManagerDBModel.SkuMaster" />
+          <EntitySet Name="SkuPrices" EntityType="RetailManagerDBModel.SkuPrice" />
+          <EntitySet Name="Stocks" EntityType="RetailManagerDBModel.Stock" />
+          <EntitySet Name="SubCatgs" EntityType="RetailManagerDBModel.SubCatg" />
+          <EntitySet Name="Suppliers" EntityType="RetailManagerDBModel.Supplier" />
+          <EntitySet Name="TaxFiles" EntityType="RetailManagerDBModel.TaxFile" />
+          <EntitySet Name="Departments" EntityType="RetailManagerDBModel.Department" />
+          <EntitySet Name="vipmasters" EntityType="RetailManagerDBModel.vipmaster" />
+        </EntityContainer>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CatgCode" />
+          </Key>
+          <Property Name="CatgCode" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="CatgDesc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="DeptCode" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="DiscPer" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="BrandCode" />
+          </Key>
+          <Property Name="BrandCode" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="BrandDesc" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="DiscPerc" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="CurrencyFile">
+          <Key>
+            <PropertyRef Name="CurrCode" />
+          </Key>
+          <Property Name="Country" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="SwiftCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="CurrCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="XRate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="EdtDt" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="HSNMaster">
+          <Key>
+            <PropertyRef Name="HSNName" />
+            <PropertyRef Name="TaxCode" />
+          </Key>
+          <Property Name="HSNCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HSNName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TaxCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SGST" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CGST" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IGST" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Cess" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocCode" />
+          </Key>
+          <Property Name="LocCode" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="LocName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPerson" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Add1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Add2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Add3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Zip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MarkUP" Type="Single" />
+          <Property Name="SalesUpdate" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="Franchisee" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="OutsideState" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="WHCode" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="WHName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="TinNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ZoneCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Medium">
+          <Key>
+            <PropertyRef Name="LocCode" />
+            <PropertyRef Name="MediaDate" />
+            <PropertyRef Name="PaymentCode" />
+            <PropertyRef Name="PaymentName" />
+          </Key>
+          <Property Name="LocCode" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="MediaDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PaymentCode" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CurrCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="BuyRate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SellRate" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DrawerAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DrawerAmountByUser" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="EquivalentAmount" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="PaymentMode">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="CurrCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="MaxAmt" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IPFrom" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="OpenDrawer" Type="Boolean" Nullable="false" />
+          <Property Name="PopUpFx" Type="Boolean" Nullable="false" />
+          <Property Name="Change" Type="Boolean" Nullable="false" />
+          <Property Name="ApprCode" Type="Boolean" Nullable="false" />
+          <Property Name="OverTender" Type="Boolean" Nullable="false" />
+          <Property Name="Validate" Type="Boolean" Nullable="false" />
+          <Property Name="PayCatg" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="PayAmt" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PayGroup" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="ChangeCode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="Smart" Type="Boolean" Nullable="false" />
+          <Property Name="Credit" Type="Boolean" Nullable="false" />
+          <Property Name="Denomination" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="plumaster">
+          <Key>
+            <PropertyRef Name="SkuCode" />
+            <PropertyRef Name="PluCode" />
+          </Key>
+          <Property Name="SkuCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PluCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PluQty" Type="Single" />
+          <Property Name="CostPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MRP" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SalePrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ExpiryMonth" Type="Int32" />
+          <Property Name="ExpiryYear" Type="Int32" />
+          <Property Name="EanCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="ACP" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="LUpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="WSPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PluShade" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ColorCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="SizeCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="PluMBQ" Type="Single" />
+          <Property Name="RackNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="ExtraPrice" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="SkuMaster">
+          <Key>
+            <PropertyRef Name="SkuCode" />
+          </Key>
+          <Property Name="SkuCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SkuDesc" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CatgCode" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="TaxCode" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="OpenRate" Type="Boolean" Nullable="false" />
+          <Property Name="Kit" Type="Boolean" Nullable="false" />
+          <Property Name="Discountable" Type="Boolean" Nullable="false" />
+          <Property Name="Qoh" Type="Single" />
+          <Property Name="Rol" Type="Single" />
+          <Property Name="Roq" Type="Single" />
+          <Property Name="Lastcost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MinPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EffectiveDate" Type="DateTime" Precision="3" />
+          <Property Name="NewPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="UOM" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="DtPromFrom" Type="DateTime" Precision="3" />
+          <Property Name="DtPromTo" Type="DateTime" Precision="3" />
+          <Property Name="PromPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AvgCost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CostPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MRP" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ExpiryMonth" Type="Int32" />
+          <Property Name="ExpiryYear" Type="Int32" />
+          <Property Name="SubCatgCode" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EanNumber" Type="Boolean" Nullable="false" />
+          <Property Name="Markup" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MarkDown" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MfgCode" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="EanCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ShortDesc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MBQ" Type="Single" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="RunningPluNo" Type="Int32" />
+          <Property Name="BrandCode" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="PackSize" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Inactive" Type="Boolean" Nullable="false" />
+          <Property Name="BestBefore" Type="Int32" />
+          <Property Name="Indent" Type="Single" />
+          <Property Name="OnOrder" Type="Single" />
+          <Property Name="RackNo" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="FrTaxCode" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="ToAllLocations" Type="Boolean" Nullable="false" />
+          <Property Name="Consignment" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Disc1" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Disc2" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="FirstCP" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="WSPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CSTTaxCode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="MaxBQ" Type="Single" />
+          <Property Name="SizeCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="ColorCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="AllowDecimals" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="WebSKU" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="Matrix" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="PatternCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="HSNCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SplCess" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="SkuPrice">
+          <Key>
+            <PropertyRef Name="LocCode" />
+            <PropertyRef Name="SkuCode" />
+            <PropertyRef Name="PluCode" />
+          </Key>
+          <Property Name="LocCode" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="SkuCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PluCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EanCode" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="CostPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MRP" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SalePrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="TaxCode" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="OpenRate" Type="Boolean" />
+          <Property Name="Discountable" Type="Boolean" />
+          <Property Name="InActive" Type="Boolean" />
+          <Property Name="NonInventory" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="StockDate" />
+            <PropertyRef Name="LocCode" />
+            <PropertyRef Name="SkuCode" />
+            <PropertyRef Name="PluCode" />
+          </Key>
+          <Property Name="StockDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LocCode" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="SkuCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PluCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Purchase" Type="Single" />
+          <Property Name="TransferIn" Type="Single" />
+          <Property Name="TransferOut" Type="Single" />
+          <Property Name="StockTake" Type="Single" />
+          <Property Name="StockWriteOff" Type="Single" />
+          <Property Name="Sales" Type="Single" />
+          <Property Name="PurchaseReturn" Type="Single" />
+          <Property Name="QOH" Type="Single" />
+          <Property Name="Variance" Type="Single" />
+          <Property Name="OldQty" Type="Single" />
+          <Property Name="Refund" Type="Single" />
+          <Property Name="SalesValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Gst" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Discount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DiscCount" Type="Int32" />
+          <Property Name="FreeQty" Type="Single" />
+          <Property Name="FreeSales" Type="Single" />
+          <Property Name="OB" Type="Single" />
+          <Property Name="CB" Type="Single" />
+          <Property Name="ApprOut" Type="Single" />
+          <Property Name="ApprIn" Type="Single" />
+          <Property Name="CostValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SurchargeAmt" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="SubCatg">
+          <Key>
+            <PropertyRef Name="SubCatgCode" />
+          </Key>
+          <Property Name="SubCatgCode" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="SubCatgDesc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Commission" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SuppCode" />
+          </Key>
+          <Property Name="SuppCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SuppName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Contact" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Area" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Town" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Phones" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Zip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="URL" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="GST" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CST" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MfgCode" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="DiscPer" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TaxPer" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CashCheque" Type="Int32" />
+          <Property Name="CreditDays" Type="Int32" />
+          <Property Name="FGL" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="DrugLic" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TIN" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="OutsideState" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="NonVatDealer" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TaxFile">
+          <Key>
+            <PropertyRef Name="TaxCode" />
+          </Key>
+          <Property Name="TaxCode" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="TaxDesc" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TaxPerc" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CalcSur" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DeptCode" />
+          </Key>
+          <Property Name="DeptCode" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="DeptDesc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="DiscPerc" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Comm" Type="Boolean" Nullable="false" />
+          <Property Name="Threshold" Type="Single" />
+        </EntityType>
+        <EntityType Name="vipmaster">
+          <Key>
+            <PropertyRef Name="VipCode" />
+          </Key>
+          <Property Name="VipCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="VipSurName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="VipName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="IcPassportNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="Sex" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="Address1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PostCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TelephoneHome" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TelephoneOther" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Race" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="Occupation" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerSince" Type="DateTime" Precision="3" />
+          <Property Name="LastPurchDate" Type="DateTime" Precision="3" />
+          <Property Name="LastPurchAmt" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="YTDPurch" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="YTDNoOfPurch" Type="Int32" />
+          <Property Name="SpouseName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="SpouseDob" Type="DateTime" Precision="3" />
+          <Property Name="AnniDate" Type="DateTime" Precision="3" />
+          <Property Name="Child1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Child1Dob" Type="DateTime" Precision="3" />
+          <Property Name="Child2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Child2Dob" Type="DateTime" Precision="3" />
+          <Property Name="Child3" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Child3Dob" Type="DateTime" Precision="3" />
+          <Property Name="Child4" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Child4Dob" Type="DateTime" Precision="3" />
+          <Property Name="Child5" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Child5Dob" Type="DateTime" Precision="3" />
+          <Property Name="CustType" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="CreditLimit" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OSAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="NoOfTrans" Type="Int32" />
+          <Property Name="TotDisc" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotTax" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotPointsAcc" Type="Single" />
+          <Property Name="TotPointsRedeem" Type="Single" />
+          <Property Name="Vip" Type="Boolean" Nullable="false" />
+          <Property Name="Credit" Type="Boolean" Nullable="false" />
+          <Property Name="Corporate" Type="Boolean" Nullable="false" />
+          <Property Name="DisPerc" Type="Single" />
+          <Property Name="LocCode" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Address3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RetailManagerDBModelStoreContainer" CdmEntityContainer="RetailManagerDBEntities">
+          <EntitySetMapping Name="CustdataNs">
+            <EntityTypeMapping TypeName="RetailManagerDBModel.CustdataN">
+              <MappingFragment StoreEntitySet="CustdataN">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="CustName" ColumnName="CustName" />
+                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+                <ScalarProperty Name="PosNo" ColumnName="PosNo" />
+                <ScalarProperty Name="Add1" ColumnName="Add1" />
+                <ScalarProperty Name="Add2" ColumnName="Add2" />
+                <ScalarProperty Name="Add3" ColumnName="Add3" />
+                <ScalarProperty Name="Updateddate" ColumnName="Updateddate" />
+                <ScalarProperty Name="GSTUpdate" ColumnName="GSTUpdate" />
+                <ScalarProperty Name="ProdType" ColumnName="ProdType" />
+                <ScalarProperty Name="A" ColumnName="A" />
+                <ScalarProperty Name="B" ColumnName="B" />
+                <ScalarProperty Name="C" ColumnName="C" />
+                <ScalarProperty Name="D" ColumnName="D" />
+                <ScalarProperty Name="E" ColumnName="E" />
+                <ScalarProperty Name="F" ColumnName="F" />
+                <ScalarProperty Name="G" ColumnName="G" />
+                <ScalarProperty Name="H" ColumnName="H" />
+                <ScalarProperty Name="I" ColumnName="I" />
+                <ScalarProperty Name="J" ColumnName="J" />
+                <ScalarProperty Name="K" ColumnName="K" />
+                <ScalarProperty Name="L" ColumnName="L" />
+                <ScalarProperty Name="M" ColumnName="M" />
+                <ScalarProperty Name="N" ColumnName="N" />
+                <ScalarProperty Name="SuppVchApi" ColumnName="SuppVchApi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="RetailManagerDBModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="DiscPer" ColumnName="DiscPer" />
+                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+                <ScalarProperty Name="CatgDesc" ColumnName="CatgDesc" />
+                <ScalarProperty Name="CatgCode" ColumnName="CatgCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="RetailManagerDBModel.Brand">
+              <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="DiscPerc" ColumnName="DiscPerc" />
+                <ScalarProperty Name="BrandDesc" ColumnName="BrandDesc" />
+                <ScalarProperty Name="BrandCode" ColumnName="BrandCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CurrencyFiles">
+            <EntityTypeMapping TypeName="RetailManagerDBModel.CurrencyFile">
+              <MappingFragment StoreEntitySet="CurrencyFile">
+                <ScalarProperty Name="EdtDt" ColumnName="EdtDt" />
+                <ScalarProperty Name="XRate" ColumnName="XRate" />
+                <ScalarProperty Name="CurrCode" ColumnName="CurrCode" />
+                <ScalarProperty Name="SwiftCode" ColumnName="SwiftCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HSNMasters">
+            <EntityTypeMapping TypeName="RetailManagerDBModel.HSNMaster">
+              <MappingFragment StoreEntitySet="HSNMaster">
+                <ScalarProperty Name="Cess" ColumnName="Cess" />
+                <ScalarProperty Name="IGST" ColumnName="IGST" />
+                <ScalarProperty Name="CGST" ColumnName="CGST" />
+                <ScalarProperty Name="SGST" ColumnName="SGST" />
+                <ScalarProperty Name="TaxCode" ColumnName="TaxCode" />
+                <ScalarProperty Name="HSNName" ColumnName="HSNName" />
+                <ScalarProperty Name="HSNCode" ColumnName="HSNCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="RetailManagerDBModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="ZoneCode" ColumnName="ZoneCode" />
+                <ScalarProperty Name="TinNo" ColumnName="TinNo" />
+                <ScalarProperty Name="WHName" ColumnName="WHName" />
+                <ScalarProperty Name="WHCode" ColumnName="WHCode" />
+                <ScalarProperty Name="OutsideState" ColumnName="OutsideState" />
+                <ScalarProperty Name="Franchisee" ColumnName="Franchisee" />
+                <ScalarProperty Name="SalesUpdate" ColumnName="SalesUpdate" />
+                <ScalarProperty Name="MarkUP" ColumnName="MarkUP" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Add3" ColumnName="Add3" />
+                <ScalarProperty Name="Add2" ColumnName="Add2" />
+                <ScalarProperty Name="Add1" ColumnName="Add1" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="LocName" ColumnName="LocName" />
+                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Media">
+            <EntityTypeMapping TypeName="RetailManagerDBModel.Medium">
+              <MappingFragment StoreEntitySet="Media">
+                <ScalarProperty Name="EquivalentAmount" ColumnName="EquivalentAmount" />
+                <ScalarProperty Name="DrawerAmountByUser" ColumnName="DrawerAmountByUser" />
+                <ScalarProperty Name="DrawerAmount" ColumnName="DrawerAmount" />
+                <ScalarProperty Name="SellRate" ColumnName="SellRate" />
+                <ScalarProperty Name="BuyRate" ColumnName="BuyRate" />
+                <ScalarProperty Name="CurrCode" ColumnName="CurrCode" />
+                <ScalarProperty Name="PaymentName" ColumnName="PaymentName" />
+                <ScalarProperty Name="PaymentCode" ColumnName="PaymentCode" />
+                <ScalarProperty Name="MediaDate" ColumnName="MediaDate" />
+                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentModes">
+            <EntityTypeMapping TypeName="RetailManagerDBModel.PaymentMode">
+              <MappingFragment StoreEntitySet="PaymentMode">
+                <ScalarProperty Name="Denomination" ColumnName="Denomination" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="Smart" ColumnName="Smart" />
+                <ScalarProperty Name="ChangeCode" ColumnName="ChangeCode" />
+                <ScalarProperty Name="PayGroup" ColumnName="PayGroup" />
+                <ScalarProperty Name="PayAmt" ColumnName="PayAmt" />
+                <ScalarProperty Name="PayCatg" ColumnName="PayCatg" />
+                <ScalarProperty Name="Validate" ColumnName="Validate" />
+                <ScalarProperty Name="OverTender" ColumnName="OverTender" />
+                <ScalarProperty Name="ApprCode" ColumnName="ApprCode" />
+                <ScalarProperty Name="Change" ColumnName="Change" />
+                <ScalarProperty Name="PopUpFx" ColumnName="PopUpFx" />
+                <ScalarProperty Name="OpenDrawer" ColumnName="OpenDrawer" />
+                <ScalarProperty Name="IPFrom" ColumnName="IPFrom" />
+                <ScalarProperty Name="MaxAmt" ColumnName="MaxAmt" />
+                <ScalarProperty Name="CurrCode" ColumnName="CurrCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="plumasters">
+            <EntityTypeMapping TypeName="RetailManagerDBModel.plumaster">
+              <MappingFragment StoreEntitySet="plumaster">
+                <ScalarProperty Name="ExtraPrice" ColumnName="ExtraPrice" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="RackNo" ColumnName="RackNo" />
+                <ScalarProperty Name="PluMBQ" ColumnName="PluMBQ" />
+                <ScalarProperty Name="SizeCode" ColumnName="SizeCode" />
+                <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+                <ScalarProperty Name="PluShade" ColumnName="PluShade" />
+                <ScalarProperty Name="WSPrice" ColumnName="WSPrice" />
+                <ScalarProperty Name="LUpdatedDate" ColumnName="LUpdatedDate" />
+                <ScalarProperty Name="ACP" ColumnName="ACP" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="EanCode" ColumnName="EanCode" />
+                <ScalarProperty Name="ExpiryYear" ColumnName="ExpiryYear" />
+                <ScalarProperty Name="ExpiryMonth" ColumnName="ExpiryMonth" />
+                <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+                <ScalarProperty Name="MRP" ColumnName="MRP" />
+                <ScalarProperty Name="CostPrice" ColumnName="CostPrice" />
+                <ScalarProperty Name="PluQty" ColumnName="PluQty" />
+                <ScalarProperty Name="PluCode" ColumnName="PluCode" />
+                <ScalarProperty Name="SkuCode" ColumnName="SkuCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SkuMasters">
+            <EntityTypeMapping TypeName="RetailManagerDBModel.SkuMaster">
+              <MappingFragment StoreEntitySet="SkuMaster">
+                <ScalarProperty Name="SplCess" ColumnName="SplCess" />
+                <ScalarProperty Name="HSNCode" ColumnName="HSNCode" />
+                <ScalarProperty Name="PatternCode" ColumnName="PatternCode" />
+                <ScalarProperty Name="Matrix" ColumnName="Matrix" />
+                <ScalarProperty Name="WebSKU" ColumnName="WebSKU" />
+                <ScalarProperty Name="AllowDecimals" ColumnName="AllowDecimals" />
+                <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+                <ScalarProperty Name="SizeCode" ColumnName="SizeCode" />
+                <ScalarProperty Name="MaxBQ" ColumnName="MaxBQ" />
+                <ScalarProperty Name="CSTTaxCode" ColumnName="CSTTaxCode" />
+                <ScalarProperty Name="WSPrice" ColumnName="WSPrice" />
+                <ScalarProperty Name="FirstCP" ColumnName="FirstCP" />
+                <ScalarProperty Name="Disc2" ColumnName="Disc2" />
+                <ScalarProperty Name="Disc1" ColumnName="Disc1" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Consignment" ColumnName="Consignment" />
+                <ScalarProperty Name="ToAllLocations" ColumnName="ToAllLocations" />
+                <ScalarProperty Name="FrTaxCode" ColumnName="FrTaxCode" />
+                <ScalarProperty Name="RackNo" ColumnName="RackNo" />
+                <ScalarProperty Name="OnOrder" ColumnName="OnOrder" />
+                <ScalarProperty Name="Indent" ColumnName="Indent" />
+                <ScalarProperty Name="BestBefore" ColumnName="BestBefore" />
+                <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+                <ScalarProperty Name="PackSize" ColumnName="PackSize" />
+                <ScalarProperty Name="BrandCode" ColumnName="BrandCode" />
+                <ScalarProperty Name="RunningPluNo" ColumnName="RunningPluNo" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="MBQ" ColumnName="MBQ" />
+                <ScalarProperty Name="ShortDesc" ColumnName="ShortDesc" />
+                <ScalarProperty Name="EanCode" ColumnName="EanCode" />
+                <ScalarProperty Name="MfgCode" ColumnName="MfgCode" />
+                <ScalarProperty Name="MarkDown" ColumnName="MarkDown" />
+                <ScalarProperty Name="Markup" ColumnName="Markup" />
+                <ScalarProperty Name="EanNumber" ColumnName="EanNumber" />
+                <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
+                <ScalarProperty Name="SubCatgCode" ColumnName="SubCatgCode" />
+                <ScalarProperty Name="ExpiryYear" ColumnName="ExpiryYear" />
+                <ScalarProperty Name="ExpiryMonth" ColumnName="ExpiryMonth" />
+                <ScalarProperty Name="MRP" ColumnName="MRP" />
+                <ScalarProperty Name="CostPrice" ColumnName="CostPrice" />
+                <ScalarProperty Name="AvgCost" ColumnName="AvgCost" />
+                <ScalarProperty Name="PromPrice" ColumnName="PromPrice" />
+                <ScalarProperty Name="DtPromTo" ColumnName="DtPromTo" />
+                <ScalarProperty Name="DtPromFrom" ColumnName="DtPromFrom" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="NewPrice" ColumnName="NewPrice" />
+                <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="MinPrice" ColumnName="MinPrice" />
+                <ScalarProperty Name="Lastcost" ColumnName="Lastcost" />
+                <ScalarProperty Name="Roq" ColumnName="Roq" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="Qoh" ColumnName="Qoh" />
+                <ScalarProperty Name="Discountable" ColumnName="Discountable" />
+                <ScalarProperty Name="Kit" ColumnName="Kit" />
+                <ScalarProperty Name="OpenRate" ColumnName="OpenRate" />
+                <ScalarProperty Name="TaxCode" ColumnName="TaxCode" />
+                <ScalarProperty Name="CatgCode" ColumnName="CatgCode" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="SkuDesc" ColumnName="SkuDesc" />
+                <ScalarProperty Name="SkuCode" ColumnName="SkuCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SkuPrices">
+            <EntityTypeMapping TypeName="RetailManagerDBModel.SkuPrice">
+              <MappingFragment StoreEntitySet="SkuPrice">
+                <ScalarProperty Name="NonInventory" ColumnName="NonInventory" />
+                <ScalarProperty Name="InActive" ColumnName="InActive" />
+                <ScalarProperty Name="Discountable" ColumnName="Discountable" />
+                <ScalarProperty Name="OpenRate" ColumnName="OpenRate" />
+                <ScalarProperty Name="TaxCode" ColumnName="TaxCode" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+                <ScalarProperty Name="MRP" ColumnName="MRP" />
+                <ScalarProperty Name="CostPrice" ColumnName="CostPrice" />
+                <ScalarProperty Name="EanCode" ColumnName="EanCode" />
+                <ScalarProperty Name="PluCode" ColumnName="PluCode" />
+                <ScalarProperty Name="SkuCode" ColumnName="SkuCode" />
+                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stocks">
+            <EntityTypeMapping TypeName="RetailManagerDBModel.Stock">
+              <MappingFragment StoreEntitySet="Stock">
+                <ScalarProperty Name="SurchargeAmt" ColumnName="SurchargeAmt" />
+                <ScalarProperty Name="CostValue" ColumnName="CostValue" />
+                <ScalarProperty Name="ApprIn" ColumnName="ApprIn" />
+                <ScalarProperty Name="ApprOut" ColumnName="ApprOut" />
+                <ScalarProperty Name="CB" ColumnName="CB" />
+                <ScalarProperty Name="OB" ColumnName="OB" />
+                <ScalarProperty Name="FreeSales" ColumnName="FreeSales" />
+                <ScalarProperty Name="FreeQty" ColumnName="FreeQty" />
+                <ScalarProperty Name="DiscCount" ColumnName="DiscCount" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Gst" ColumnName="Gst" />
+                <ScalarProperty Name="SalesValue" ColumnName="SalesValue" />
+                <ScalarProperty Name="Refund" ColumnName="Refund" />
+                <ScalarProperty Name="OldQty" ColumnName="OldQty" />
+                <ScalarProperty Name="Variance" ColumnName="Variance" />
+                <ScalarProperty Name="QOH" ColumnName="QOH" />
+                <ScalarProperty Name="PurchaseReturn" ColumnName="PurchaseReturn" />
+                <ScalarProperty Name="Sales" ColumnName="Sales" />
+                <ScalarProperty Name="StockWriteOff" ColumnName="StockWriteOff" />
+                <ScalarProperty Name="StockTake" ColumnName="StockTake" />
+                <ScalarProperty Name="TransferOut" ColumnName="TransferOut" />
+                <ScalarProperty Name="TransferIn" ColumnName="TransferIn" />
+                <ScalarProperty Name="Purchase" ColumnName="Purchase" />
+                <ScalarProperty Name="PluCode" ColumnName="PluCode" />
+                <ScalarProperty Name="SkuCode" ColumnName="SkuCode" />
+                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+                <ScalarProperty Name="StockDate" ColumnName="StockDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubCatgs">
+            <EntityTypeMapping TypeName="RetailManagerDBModel.SubCatg">
+              <MappingFragment StoreEntitySet="SubCatg">
+                <ScalarProperty Name="Commission" ColumnName="Commission" />
+                <ScalarProperty Name="SubCatgDesc" ColumnName="SubCatgDesc" />
+                <ScalarProperty Name="SubCatgCode" ColumnName="SubCatgCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="RetailManagerDBModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="NonVatDealer" ColumnName="NonVatDealer" />
+                <ScalarProperty Name="OutsideState" ColumnName="OutsideState" />
+                <ScalarProperty Name="TIN" ColumnName="TIN" />
+                <ScalarProperty Name="DrugLic" ColumnName="DrugLic" />
+                <ScalarProperty Name="FGL" ColumnName="FGL" />
+                <ScalarProperty Name="CreditDays" ColumnName="CreditDays" />
+                <ScalarProperty Name="CashCheque" ColumnName="CashCheque" />
+                <ScalarProperty Name="TaxPer" ColumnName="TaxPer" />
+                <ScalarProperty Name="DiscPer" ColumnName="DiscPer" />
+                <ScalarProperty Name="MfgCode" ColumnName="MfgCode" />
+                <ScalarProperty Name="CST" ColumnName="CST" />
+                <ScalarProperty Name="GST" ColumnName="GST" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Phones" ColumnName="Phones" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="SuppName" ColumnName="SuppName" />
+                <ScalarProperty Name="SuppCode" ColumnName="SuppCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaxFiles">
+            <EntityTypeMapping TypeName="RetailManagerDBModel.TaxFile">
+              <MappingFragment StoreEntitySet="TaxFile">
+                <ScalarProperty Name="CalcSur" ColumnName="CalcSur" />
+                <ScalarProperty Name="TaxPerc" ColumnName="TaxPerc" />
+                <ScalarProperty Name="TaxDesc" ColumnName="TaxDesc" />
+                <ScalarProperty Name="TaxCode" ColumnName="TaxCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="RetailManagerDBModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="Threshold" ColumnName="Threshold" />
+                <ScalarProperty Name="Comm" ColumnName="Comm" />
+                <ScalarProperty Name="DiscPerc" ColumnName="DiscPerc" />
+                <ScalarProperty Name="DeptDesc" ColumnName="DeptDesc" />
+                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vipmasters">
+            <EntityTypeMapping TypeName="RetailManagerDBModel.vipmaster">
+              <MappingFragment StoreEntitySet="vipmaster">
+                <ScalarProperty Name="Address4" ColumnName="Address4" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+                <ScalarProperty Name="DisPerc" ColumnName="DisPerc" />
+                <ScalarProperty Name="Corporate" ColumnName="Corporate" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="Vip" ColumnName="Vip" />
+                <ScalarProperty Name="TotPointsRedeem" ColumnName="TotPointsRedeem" />
+                <ScalarProperty Name="TotPointsAcc" ColumnName="TotPointsAcc" />
+                <ScalarProperty Name="TotValue" ColumnName="TotValue" />
+                <ScalarProperty Name="TotTax" ColumnName="TotTax" />
+                <ScalarProperty Name="TotDisc" ColumnName="TotDisc" />
+                <ScalarProperty Name="NoOfTrans" ColumnName="NoOfTrans" />
+                <ScalarProperty Name="OSAmount" ColumnName="OSAmount" />
+                <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
+                <ScalarProperty Name="CustType" ColumnName="CustType" />
+                <ScalarProperty Name="Child5Dob" ColumnName="Child5Dob" />
+                <ScalarProperty Name="Child5" ColumnName="Child5" />
+                <ScalarProperty Name="Child4Dob" ColumnName="Child4Dob" />
+                <ScalarProperty Name="Child4" ColumnName="Child4" />
+                <ScalarProperty Name="Child3Dob" ColumnName="Child3Dob" />
+                <ScalarProperty Name="Child3" ColumnName="Child3" />
+                <ScalarProperty Name="Child2Dob" ColumnName="Child2Dob" />
+                <ScalarProperty Name="Child2" ColumnName="Child2" />
+                <ScalarProperty Name="Child1Dob" ColumnName="Child1Dob" />
+                <ScalarProperty Name="Child1" ColumnName="Child1" />
+                <ScalarProperty Name="AnniDate" ColumnName="AnniDate" />
+                <ScalarProperty Name="SpouseDob" ColumnName="SpouseDob" />
+                <ScalarProperty Name="SpouseName" ColumnName="SpouseName" />
+                <ScalarProperty Name="YTDNoOfPurch" ColumnName="YTDNoOfPurch" />
+                <ScalarProperty Name="YTDPurch" ColumnName="YTDPurch" />
+                <ScalarProperty Name="LastPurchAmt" ColumnName="LastPurchAmt" />
+                <ScalarProperty Name="LastPurchDate" ColumnName="LastPurchDate" />
+                <ScalarProperty Name="CustomerSince" ColumnName="CustomerSince" />
+                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="Race" ColumnName="Race" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TelephoneOther" ColumnName="TelephoneOther" />
+                <ScalarProperty Name="TelephoneHome" ColumnName="TelephoneHome" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="IcPassportNo" ColumnName="IcPassportNo" />
+                <ScalarProperty Name="VipName" ColumnName="VipName" />
+                <ScalarProperty Name="VipSurName" ColumnName="VipSurName" />
+                <ScalarProperty Name="VipCode" ColumnName="VipCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
